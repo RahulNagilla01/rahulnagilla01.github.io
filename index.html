@@ -3,107 +3,486 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rahul Nagilla | AI Researcher</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <title>Kenny [Last Name] - Research Portfolio</title>
     <style>
-        body { font-family: 'Inter', sans-serif; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #ffffff;
+        }
+
+        .container {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* Left Sidebar */
+        .sidebar {
+            width: 280px;
+            background-color: #2c3e50;
+            color: #ffffff;
+            padding: 40px 30px;
+            position: fixed;
+            height: 100vh;
+            overflow-y: auto;
+        }
+
+        .profile-photo {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            margin: 0 auto 25px;
+            display: block;
+            border: 4px solid #ffffff;
+            object-fit: cover;
+            background-color: #ecf0f1;
+        }
+
+        .sidebar h1 {
+            font-size: 24px;
+            margin-bottom: 8px;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        .sidebar .title {
+            font-size: 14px;
+            text-align: center;
+            margin-bottom: 25px;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+
+        .contact-info {
+            margin-top: 30px;
+            font-size: 13px;
+            line-height: 1.8;
+        }
+
+        .contact-info a {
+            color: #ffffff;
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-bottom 0.3s;
+        }
+
+        .contact-info a:hover {
+            border-bottom: 1px solid #ffffff;
+        }
+
+        .contact-info p {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+        }
+
+        .contact-info i {
+            margin-right: 10px;
+            min-width: 18px;
+        }
+
+        .nav-links {
+            margin-top: 35px;
+            padding-top: 25px;
+            border-top: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .nav-links a {
+            display: block;
+            color: #ffffff;
+            text-decoration: none;
+            padding: 10px 0;
+            font-size: 14px;
+            transition: padding-left 0.3s;
+        }
+
+        .nav-links a:hover {
+            padding-left: 10px;
+        }
+
+        /* Main Content */
+        .main-content {
+            margin-left: 280px;
+            flex: 1;
+            padding: 60px 80px;
+            max-width: 1000px;
+        }
+
+        .section {
+            margin-bottom: 60px;
+        }
+
+        .section h2 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: #2c3e50;
+            border-bottom: 2px solid #2c3e50;
+            padding-bottom: 10px;
+        }
+
+        .about p {
+            margin-bottom: 15px;
+            text-align: justify;
+            font-size: 15px;
+            line-height: 1.7;
+        }
+
+        .research-interests {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+        .interest-tag {
+            background-color: #ecf0f1;
+            color: #2c3e50;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+
+        /* Publications */
+        .publication-item {
+            margin-bottom: 25px;
+            padding: 20px;
+            background-color: #f8f9fa;
+            border-left: 3px solid #2c3e50;
+            border-radius: 4px;
+        }
+
+        .publication-item .authors {
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+
+        .publication-item .title {
+            font-size: 16px;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+
+        .publication-item .venue {
+            font-style: italic;
+            font-size: 14px;
+            color: #555;
+            margin-bottom: 8px;
+        }
+
+        .publication-item .status {
+            display: inline-block;
+            background-color: #2c3e50;
+            color: #ffffff;
+            padding: 3px 10px;
+            border-radius: 3px;
+            font-size: 12px;
+            margin-top: 5px;
+        }
+
+        /* Projects */
+        .project-item {
+            margin-bottom: 30px;
+        }
+
+        .project-item h3 {
+            font-size: 18px;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+
+        .project-item p {
+            margin-bottom: 8px;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .project-item .tech-stack {
+            font-size: 13px;
+            color: #555;
+            font-style: italic;
+            margin-top: 8px;
+        }
+
+        /* News/Updates */
+        .news-item {
+            margin-bottom: 15px;
+            padding-left: 20px;
+            border-left: 2px solid #ecf0f1;
+        }
+
+        .news-item .date {
+            font-weight: 600;
+            color: #2c3e50;
+            font-size: 14px;
+            margin-bottom: 3px;
+        }
+
+        .news-item p {
+            font-size: 14px;
+            color: #555;
+        }
+
+        /* Links */
+        .main-content a {
+            color: #2c3e50;
+            text-decoration: none;
+            border-bottom: 1px solid #2c3e50;
+        }
+
+        .main-content a:hover {
+            opacity: 0.7;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+            
+            .sidebar {
+                position: relative;
+                width: 100%;
+                height: auto;
+                padding: 30px 20px;
+            }
+            
+            .main-content {
+                margin-left: 0;
+                padding: 40px 20px;
+            }
+            
+            .profile-photo {
+                width: 150px;
+                height: 150px;
+            }
+        }
+
+        /* Footer */
+        footer {
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 1px solid #ecf0f1;
+            text-align: center;
+            color: #999;
+            font-size: 13px;
+        }
     </style>
 </head>
-<body class="bg-[#E0F7FA] text-slate-900 leading-relaxed font-light">
-
-    <div class="max-w-7xl mx-auto my-12 p-8 md:p-12 bg-white shadow-lg rounded-2xl flex flex-col md:flex-row gap-12">
-        
-        <aside class="md:w-1/4 flex-shrink-0">
-            <div class="aspect-square bg-slate-100 rounded-xl overflow-hidden mb-6 border-4 border-[#E0F7FA]">
-                <img src="profile-photo.jpg" alt="Rahul Nagilla" class="w-full h-full object-cover">
+<body>
+    <div class="container">
+        <!-- Left Sidebar -->
+        <aside class="sidebar">
+            <img src="profile-photo.jpg" alt="Kenny [Last Name]" class="profile-photo">
+            <!-- Replace "profile-photo.jpg" with your actual photo filename -->
+            
+            <h1>Kenny [Last Name]</h1>
+            <p class="title">Undergraduate Researcher<br>Bennett University</p>
+            
+            <div class="contact-info">
+                <p><i>📧</i> <a href="mailto:your.email@example.com">your.email@example.com</a></p>
+                <p><i>📍</i> Hyderabad, India</p>
+                <p><i>🔗</i> <a href="https://github.com/yourusername" target="_blank">GitHub</a></p>
+                <p><i>🔗</i> <a href="https://linkedin.com/in/yourprofile" target="_blank">LinkedIn</a></p>
+                <p><i>📄</i> <a href="cv.pdf" target="_blank">Download CV</a></p>
             </div>
-
-            <h1 class="text-3xl font-semibold tracking-tight text-slate-950">Rahul Nagilla</h1>
-            <p class="text-lg text-blue-800 mt-2 font-medium">B.Tech in Artificial Intelligence</p>
-            <p class="text-base text-slate-500 mt-1">Aspiring AI Researcher</p>
-
-            <div class="mt-8 pt-8 border-t border-slate-100 space-y-4 text-sm font-medium">
-                <a href="mailto:rahul.n@email.com" class="block text-blue-700 hover:text-blue-900 transition flex items-center gap-3">
-                    ✉️ rahul.n@email.com
-                </a>
-                <a href="https://github.com/rahulnagilla01" target="_blank" class="block text-slate-700 hover:text-slate-950 transition flex items-center gap-3">
-                    💻 GitHub
-                </a>
-                <a href="#" target="_blank" class="block text-slate-700 hover:text-slate-950 transition flex items-center gap-3">
-                    🎓 Google Scholar
-                </a>
-                <a href="#" target="_blank" class="block text-slate-700 hover:text-slate-950 transition flex items-center gap-3">
-                    🔗 LinkedIn
-                </a>
-            </div>
+            
+            <nav class="nav-links">
+                <a href="#about">About</a>
+                <a href="#research">Research</a>
+                <a href="#publications">Publications</a>
+                <a href="#projects">Projects</a>
+                <a href="#news">News</a>
+            </nav>
         </aside>
 
-        <main class="md:w-3/4 space-y-12">
-            
-            <section>
-                <h2 class="text-xs font-semibold uppercase tracking-widest text-slate-500 mb-5">About Me</h2>
-                <div class="prose prose-slate prose-lg max-w-none text-slate-800">
-                    <p>
-                        I am a final-year B.Tech student focusing on **Computer Vision** and **Vision Transformers**. My research explores how architecture choices impact performance on edge devices. Currently, I am working on making AI models more interpretable using techniques like Grad-CAM.
-                    </p>
-                    <p>
-                        I am passionate about research that balances technical performance with real-world deployment challenges.
-                    </p>
-                </div>
-            </section>
-
-            <section>
-                <h2 class="text-xs font-semibold uppercase tracking-widest text-slate-500 mb-5">News & Updates</h2>
-                <ul class="space-y-3 text-sm text-slate-700">
-                    <li><span class="font-medium text-slate-500 mr-3">[Feb 2026]</span> Paper accepted at **ICTIS-2026** in Bangkok.</li>
-                    <li><span class="font-medium text-slate-500 mr-3">[Sept 2025]</span> Presented my first-author paper at **ICDAM-2025**.</li>
-                </ul>
-            </section>
-
-            <section>
-                <h2 class="text-xs font-semibold uppercase tracking-widest text-slate-500 mb-5">Selected Publications</h2>
-                <div class="space-y-8">
-                    <div class="p-5 bg-[#E0F7FA]/30 rounded-lg border border-[#E0F7FA]">
-                        <p class="text-xl font-medium text-slate-950">Benchmarking Vision Transformers against CNNs for Edge Devices</p>
-                        <p class="text-base text-slate-600 italic mt-2">Nagilla, Rahul., et al.</p>
-                        <p class="text-sm text-slate-500 mt-1">International Conference on Data Analytics and Management (ICDAM 2025)</p>
-                        <div class="flex gap-4 mt-4 text-sm font-medium">
-                            <a href="#" class="text-blue-700 hover:underline">[Cite: PDF]</a>
-                            <a href="#" class="text-blue-700 hover:underline">[Cite: Code]</a>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section>
-                <h2 class="text-xs font-semibold uppercase tracking-widest text-slate-500 mb-5">Selected Projects</h2>
-                <div class="space-y-6">
-                    <div class="border border-slate-100 p-6 rounded-xl hover:shadow-sm transition">
-                        <p class="text-xl font-medium text-slate-950">Krishi Darpan</p>
-                        <p class="text-slate-700 mt-2">An AI platform for plant disease classification using MobileNetV2, achieving 92% accuracy across 137 classes.</p>
-                    </div>
-                    <div class="border border-slate-100 p-6 rounded-xl hover:shadow-sm transition">
-                        <p class="text-xl font-medium text-slate-950">CYMBOT</p>
-                        <p class="text-slate-700 mt-2">A mental health conversational AI built using Ollama 7B and Flask.</p>
-                    </div>
-                </div>
-            </section>
-
-            <section>
-                <h2 class="text-xs font-semibold uppercase tracking-widest text-slate-500 mb-5">Leadership & Impact</h2>
-                <p class="text-slate-800 p-5 bg-[#E0F7FA]/30 rounded-lg border border-[#E0F7FA]">
-                    Founder of **The Indian Programming School**, a peer-to-peer NGO teaching computer science foundations to government school students.
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- About Section -->
+            <section id="about" class="section about">
+                <h2>About Me</h2>
+                <p>
+                    I am a second-year undergraduate student at Bennett University pursuing B.Tech in Computer Science & Engineering 
+                    with a specialization in Artificial Intelligence. My research interests lie at the intersection of 
+                    <strong>computer vision</strong>, <strong>explainable AI</strong>, and <strong>deep learning</strong>.
                 </p>
+                <p>
+                    Currently, I am exploring Vision Transformers and their applications in agricultural AI and medical imaging. 
+                    I am particularly interested in understanding how different neural architectures process visual information and 
+                    developing interpretable models for real-world deployment.
+                </p>
+                <p>
+                    I am seeking <strong>summer research internship opportunities (May-July 2026)</strong> to work on 
+                    cutting-edge problems in computer vision and contribute to impactful research. Based in Hyderabad, 
+                    I am available for in-person collaboration.
+                </p>
+
+                <div class="research-interests">
+                    <span class="interest-tag">Computer Vision</span>
+                    <span class="interest-tag">Vision Transformers</span>
+                    <span class="interest-tag">Explainable AI</span>
+                    <span class="interest-tag">Multimodal Learning</span>
+                    <span class="interest-tag">Agricultural AI</span>
+                    <span class="interest-tag">Medical Imaging</span>
+                </div>
             </section>
 
+            <!-- Research Section -->
+            <section id="research" class="section">
+                <h2>Research Experience</h2>
+                
+                <div class="project-item">
+                    <h3>Vision Transformers vs CNNs for Agricultural Disease Detection</h3>
+                    <p><em>Research Assistant, Bennett University | May 2025 - Jan 2026</em></p>
+                    <p>
+                        Conducted rigorous comparison of ViT-B/16 and ResNet-50 architectures for potato foliar disease 
+                        classification. Implemented 5-fold cross-validation with ANOVA testing (F=10.946, p=0.0107) and 
+                        explainable AI analysis (Grad-CAM vs Attention Rollout). Achieved 99.12% accuracy with ViT 
+                        demonstrating superior stability and interpretability.
+                    </p>
+                    <p class="tech-stack">
+                        <strong>Technologies:</strong> PyTorch, Vision Transformers, Statistical Analysis, XAI
+                    </p>
+                </div>
+
+                <div class="project-item">
+                    <h3>AI Techniques in Medical Imaging - Systematic Review</h3>
+                    <p><em>Research Assistant, Bennett University | Jul 2024 - Dec 2024</em></p>
+                    <p>
+                        First author on systematic review analyzing 30+ papers comparing ML vs DL approaches for mpox detection. 
+                        Demonstrated superior performance of deep learning models and compiled repository of publicly 
+                        available datasets for research community. Published during first year of undergraduate studies.
+                    </p>
+                    <p class="tech-stack">
+                        <strong>Focus:</strong> Literature Review, Medical AI, Deep Learning
+                    </p>
+                </div>
+
+                <div class="project-item">
+                    <h3>Few-Shot Object Detection Using Meta-Learning</h3>
+                    <p><em>Ongoing Research, Bennett University | Jan 2026 - Present</em></p>
+                    <p>
+                        Collaborating with faculty on data-efficient object detection methodologies. Investigating 
+                        meta-learning strategies for rapid adaptation to novel object categories with limited examples.
+                    </p>
+                    <p class="tech-stack">
+                        <strong>Expected Completion:</strong> March 2026
+                    </p>
+                </div>
+            </section>
+
+            <!-- Publications Section -->
+            <section id="publications" class="section">
+                <h2>Publications</h2>
+                
+                <div class="publication-item">
+                    <p class="authors">
+                        <strong>Rahul Nagilla</strong>, Monia Digra, Jyoti Nagpal, Shivani Jain
+                    </p>
+                    <p class="title">
+                        Benchmarking Vision Transformers and CNNs for Potato Foliar Disease: A Statistically 
+                        Validated Study on Model Stability and Feature Attribution
+                    </p>
+                    <p class="venue">
+                        International Conference on Technology, Innovation and Society (ICTIS-2026), Bangkok, Thailand
+                    </p>
+                    <span class="status">Accepted</span>
+                </div>
+
+                <div class="publication-item">
+                    <p class="authors">
+                        <strong>Kenny [Last Name]</strong> et al.
+                    </p>
+                    <p class="title">
+                        Analysis of AI Techniques in Mpox Detection: A Systematic Review
+                    </p>
+                    <p class="venue">
+                        International Conference on Data Analytics and Management (ICDAM-2025)
+                    </p>
+                    <span class="status">Published</span>
+                    <p style="font-size: 12px; color: #666; margin-top: 8px;">
+                        <em>* Completed during 1st year of undergraduate studies</em>
+                    </p>
+                </div>
+            </section>
+
+            <!-- Projects Section -->
+            <section id="projects" class="section">
+                <h2>Selected Projects</h2>
+                
+                <div class="project-item">
+                    <h3>Krishi Darpan - AI Platform for Smallholder Farmers</h3>
+                    <p>
+                        Developed end-to-end mobile application for automated plant disease diagnosis. Trained MobileNetV2 
+                        for 137-class disease classification achieving 92% accuracy. Optimized for edge deployment using 
+                        TensorFlow Lite (&lt;50MB, &lt;200ms inference).
+                    </p>
+                    <p class="tech-stack">
+                        <strong>Tech Stack:</strong> PyTorch, TensorFlow Lite, Android Studio, Flask
+                    </p>
+                </div>
+
+                <div class="project-item">
+                    <h3>CYMBOT - Conversational AI for Mental Health</h3>
+                    <p>
+                        Built therapeutic chatbot using Ollama 7B with custom prompt engineering. Implemented conversation 
+                        context management and safety guardrails for responsible AI deployment.
+                    </p>
+                    <p class="tech-stack">
+                        <strong>Tech Stack:</strong> Ollama, Flask, Python, Mobile Development
+                    </p>
+                </div>
+
+                <div class="project-item">
+                    <h3>CollabX - Team Collaboration Platform</h3>
+                    <p>
+                        Java-based desktop application for project management featuring Kanban boards, real-time chat, 
+                        and task tracking. Designed for small team coordination and productivity.
+                    </p>
+                    <p class="tech-stack">
+                        <strong>Tech Stack:</strong> Java, JavaFX, SQLite
+                    </p>
+                </div>
+            </section>
+
+            <!-- News/Updates Section -->
+            <section id="news" class="section">
+                <h2>News & Updates</h2>
+                
+                <div class="news-item">
+                    <p class="date">January 2026</p>
+                    <p>Paper on Vision Transformers vs CNNs accepted at ICTIS-2026, Bangkok, Thailand</p>
+                </div>
+
+                <div class="news-item">
+                    <p class="date">January 2026</p>
+                    <p>Started collaboration on few-shot object detection research project</p>
+                </div>
+
+                <div class="news-item">
+                    <p class="date">December 2024</p>
+                    <p>Published systematic review on AI techniques in medical imaging at ICDAM-2025</p>
+                </div>
+
+                <div class="news-item">
+                    <p class="date">May 2024</p>
+                    <p>Published first research paper during 1st year of undergraduate studies</p>
+                </div>
+            </section>
+
+            <footer>
+                <p>&copy; 2026 Kenny [Last Name]. Last updated: February 2026</p>
+                <p>Built with HTML & CSS | Hosted on GitHub Pages</p>
+            </footer>
         </main>
-
     </div>
-
-    <footer class="max-w-7xl mx-auto px-12 mb-12 text-center text-xs text-slate-400">
-        © 2026 Rahul Nagilla. Built with simple HTML.
-    </footer>
-
 </body>
 </html>
