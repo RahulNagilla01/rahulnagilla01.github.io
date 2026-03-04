@@ -3,298 +3,107 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kenny | AI Researcher</title>
+    <title>Rahul Nagilla | AI Researcher</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
-        /* Modern academic typography */
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap');
-
-        :root {
-            --bg-color: #ffffff; /* White background */
-            --accent-color: #e3f2fd; /* Light sky blue accent */
-            --primary-text: #1a202c; /* Near-black for main text */
-            --secondary-text: #64748b; /* Mid-gray for descriptions */
-            --accent-text: #075985; /* Darker blue for highlights */
-            --body-font: 'Inter', sans-serif;
-            --header-font: 'Inter', serif;
-        }
-
-        body {
-            font-family: var(--body-font);
-            background-color: var(--bg-color);
-            color: var(--primary-text);
-            margin: 0;
-            line-height: 1.6;
-            display: flex;
-            min-height: 100vh;
-        }
-
-        /* Fixed sidebar on the left */
-        .sidebar {
-            width: 300px; /* Adjust sidebar width as needed */
-            background-color: var(--bg-color);
-            padding: 3rem 2rem;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            border-right: 1px solid #e2e8f0; /* Subtle border for separation */
-            position: fixed; /* Keep sidebar in place on scroll */
-            height: 100vh; /* Fill full height */
-            box-sizing: border-box; /* Include padding in width/height */
-        }
-
-        .profile-container {
-            margin-bottom: 2rem;
-        }
-
-        .profile-photo {
-            width: 150px;
-            height: 150px;
-            background-color: #f1f5f9; /* Fallback color for missing photo */
-            /* Add actual image source here: `<img src="path/to/your/photo.jpg" alt="Kenny" class="profile-photo">` */
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 4px; /* Slight rounding for a modern feel, but still square-ish */
-            overflow: hidden; /* Ensure image fits neatly */
-            border: 1px solid #e2e8f0;
-        }
-
-        .profile-name {
-            font-family: var(--header-font);
-            font-size: 1.75rem;
-            font-weight: 700;
-            margin: 1rem 0 0.5rem;
-            color: var(--primary-text);
-        }
-
-        .profile-title {
-            color: var(--secondary-text);
-            font-size: 1rem;
-            text-align: center;
-            margin: 0;
-        }
-
-        .social-links {
-            margin-top: 2rem;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-            justify-content: center;
-        }
-
-        .social-link {
-            text-decoration: none;
-            color: var(--accent-text);
-            font-weight: 500;
-            font-size: 0.9rem;
-            transition: color 0.2s;
-        }
-
-        .social-link:hover {
-            color: var(--primary-text);
-        }
-
-        /* Main content area next to sidebar */
-        .main-content {
-            flex: 1;
-            padding: 3rem;
-            margin-left: 300px; /* Must match sidebar width */
-            background-color: var(--bg-color); /* Maintain white background in main area */
-        }
-
-        section {
-            margin-bottom: 3rem;
-        }
-
-        h2 {
-            font-family: var(--header-font);
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--primary-text);
-            margin-bottom: 1rem;
-            border-bottom: 1px solid var(--accent-color); /* Sky-blue border below section title */
-            padding-bottom: 0.5rem;
-        }
-
-        /* Styling for the about section */
-        .about-text {
-            color: var(--primary-text);
-            max-width: 65ch; /* Comfortable reading length */
-        }
-
-        /* Professional list for the news section */
-        .news-list {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            space-y: 1.5rem;
-        }
-
-        .news-item {
-            display: flex;
-            gap: 1.5rem;
-            align-items: baseline;
-            margin-bottom: 1rem;
-        }
-
-        .news-date {
-            color: var(--secondary-text);
-            font-weight: 500;
-            font-size: 0.9rem;
-            flex-shrink: 0;
-            width: 100px;
-            text-align: right;
-        }
-
-        .news-description {
-            flex: 1;
-            color: var(--primary-text);
-        }
-
-        /* Consistent card-style for publications and projects */
-        .card-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); /* Adapt based on content/container width */
-            gap: 1.5rem;
-        }
-
-        .card {
-            background-color: #fff;
-            padding: 1.5rem;
-            border-radius: 4px;
-            border: 1px solid #e2e8f0;
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-
-        .card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.05); /* Subtle shadow on hover */
-        }
-
-        .card-title {
-            font-weight: 600;
-            font-size: 1.1rem;
-            color: var(--primary-text);
-            margin: 0 0 0.5rem;
-        }
-
-        .card-authors {
-            color: var(--secondary-text);
-            font-style: italic;
-            font-size: 0.9rem;
-            margin: 0 0 0.5rem;
-        }
-
-        .card-meta {
-            color: var(--accent-text);
-            font-size: 0.9rem;
-            font-weight: 500;
-            margin: 0 0 1rem;
-        }
-
-        .card-links {
-            display: flex;
-            gap: 1rem;
-            font-size: 0.9rem;
-        }
-
-        .card-link {
-            text-decoration: none;
-            color: var(--accent-text);
-            transition: color 0.2s;
-        }
-
-        .card-link:hover {
-            color: var(--primary-text);
-        }
-
-        /* Simplified leadership and impact display */
-        .impact-text {
-            color: var(--primary-text);
-            font-size: 1rem;
-        }
+        body { font-family: 'Inter', sans-serif; }
     </style>
 </head>
-<body>
+<body class="bg-[#E0F7FA] text-slate-900 leading-relaxed font-light">
 
-    <aside class="sidebar">
-        <div class="profile-container">
-            <div class="profile-photo">
-                <span style="color: #94a3b8; font-weight: 600;">KENNY</span>
+    <div class="max-w-7xl mx-auto my-12 p-8 md:p-12 bg-white shadow-lg rounded-2xl flex flex-col md:flex-row gap-12">
+        
+        <aside class="md:w-1/4 flex-shrink-0">
+            <div class="aspect-square bg-slate-100 rounded-xl overflow-hidden mb-6 border-4 border-[#E0F7FA]">
+                <img src="profile-photo.jpg" alt="Rahul Nagilla" class="w-full h-full object-cover">
             </div>
-            <h1 class="profile-name">Kenny</h1>
-            <p class="profile-title">B.Tech in Artificial Intelligence<br>Aspiring AI Researcher</p>
-        </div>
-        <div class="social-links">
-            <a href="#" class="social-link">Email</a>
-            <a href="#" class="social-link">GitHub</a>
-            <a href="#" class="social-link">Google Scholar</a>
-            <a href="#" class="social-link">LinkedIn</a>
-        </div>
-    </aside>
 
-    <main class="main-content">
+            <h1 class="text-3xl font-semibold tracking-tight text-slate-950">Rahul Nagilla</h1>
+            <p class="text-lg text-blue-800 mt-2 font-medium">B.Tech in Artificial Intelligence</p>
+            <p class="text-base text-slate-500 mt-1">Aspiring AI Researcher</p>
 
-        <section id="about">
-            <h2>About Me</h2>
-            <p class="about-text">
-                I am a passionate B.Tech student specializing in Artificial Intelligence, driven by a desire to explore the cutting-edge of research. My current focus lies in **Computer Vision**, with a particular interest in leveraging **Vision Transformers** ($ViT$) for real-world applications. My academic journey has allowed me to dive deep into model interpretability techniques, aiming to create AI that is not just powerful, but transparent and trustworthy.
-            </p>
-        </section>
+            <div class="mt-8 pt-8 border-t border-slate-100 space-y-4 text-sm font-medium">
+                <a href="mailto:rahul.n@email.com" class="block text-blue-700 hover:text-blue-900 transition flex items-center gap-3">
+                    ✉️ rahul.n@email.com
+                </a>
+                <a href="https://github.com/rahulnagilla01" target="_blank" class="block text-slate-700 hover:text-slate-950 transition flex items-center gap-3">
+                    💻 GitHub
+                </a>
+                <a href="#" target="_blank" class="block text-slate-700 hover:text-slate-950 transition flex items-center gap-3">
+                    🎓 Google Scholar
+                </a>
+                <a href="#" target="_blank" class="block text-slate-700 hover:text-slate-950 transition flex items-center gap-3">
+                    🔗 LinkedIn
+                </a>
+            </div>
+        </aside>
 
-        <section id="news">
-            <h2>News</h2>
-            <ul class="news-list">
-                <li class="news-item">
-                    <span class="news-date">[Feb 2026]</span>
-                    <span class="news-description">Paper accepted at **ICTIS-2026** in Bangkok.</span>
-                </li>
-                <li class="news-item">
-                    <span class="news-date">[Sept 2025]</span>
-                    <span class="news-description">Presented my first-author paper at **ICDAM-2025**.</span>
-                </li>
-            </ul>
-        </section>
+        <main class="md:w-3/4 space-y-12">
+            
+            <section>
+                <h2 class="text-xs font-semibold uppercase tracking-widest text-slate-500 mb-5">About Me</h2>
+                <div class="prose prose-slate prose-lg max-w-none text-slate-800">
+                    <p>
+                        I am a final-year B.Tech student focusing on **Computer Vision** and **Vision Transformers**. My research explores how architecture choices impact performance on edge devices. Currently, I am working on making AI models more interpretable using techniques like Grad-CAM.
+                    </p>
+                    <p>
+                        I am passionate about research that balances technical performance with real-world deployment challenges.
+                    </p>
+                </div>
+            </section>
 
-        <section id="publications">
-            <h2>Selected Publications</h2>
-            <div class="card-container">
-                <div class="card">
-                    <p class="card-title">Benchmarking Vision Transformers against CNNs for Edge Devices</p>
-                    <p class="card-authors">Nagilla, K., et al.</p>
-                    <p class="card-meta">ICDAM 2025 | Published</p>
-                    <div class="card-links">
-                        <a href="#" class="card-link">PDF</a>
-                        <a href="#" class="card-link">Code</a>
+            <section>
+                <h2 class="text-xs font-semibold uppercase tracking-widest text-slate-500 mb-5">News & Updates</h2>
+                <ul class="space-y-3 text-sm text-slate-700">
+                    <li><span class="font-medium text-slate-500 mr-3">[Feb 2026]</span> Paper accepted at **ICTIS-2026** in Bangkok.</li>
+                    <li><span class="font-medium text-slate-500 mr-3">[Sept 2025]</span> Presented my first-author paper at **ICDAM-2025**.</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2 class="text-xs font-semibold uppercase tracking-widest text-slate-500 mb-5">Selected Publications</h2>
+                <div class="space-y-8">
+                    <div class="p-5 bg-[#E0F7FA]/30 rounded-lg border border-[#E0F7FA]">
+                        <p class="text-xl font-medium text-slate-950">Benchmarking Vision Transformers against CNNs for Edge Devices</p>
+                        <p class="text-base text-slate-600 italic mt-2">Nagilla, Rahul., et al.</p>
+                        <p class="text-sm text-slate-500 mt-1">International Conference on Data Analytics and Management (ICDAM 2025)</p>
+                        <div class="flex gap-4 mt-4 text-sm font-medium">
+                            <a href="#" class="text-blue-700 hover:underline">[Cite: PDF]</a>
+                            <a href="#" class="text-blue-700 hover:underline">[Cite: Code]</a>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </section>
+            </section>
 
-        <section id="projects">
-            <h2>Selected Projects</h2>
-            <div class="card-container">
-                <div class="card">
-                    <p class="card-title">Krishi Darpan</p>
-                    <p class="card-authors">Agricultural AI Solution</p>
-                    <p class="card-description text-sm text-slate-700">An AI platform utilizing MobileNetV2 to achieve 92% accuracy in classifying plant diseases across 137 distinct classes.</p>
+            <section>
+                <h2 class="text-xs font-semibold uppercase tracking-widest text-slate-500 mb-5">Selected Projects</h2>
+                <div class="space-y-6">
+                    <div class="border border-slate-100 p-6 rounded-xl hover:shadow-sm transition">
+                        <p class="text-xl font-medium text-slate-950">Krishi Darpan</p>
+                        <p class="text-slate-700 mt-2">An AI platform for plant disease classification using MobileNetV2, achieving 92% accuracy across 137 classes.</p>
+                    </div>
+                    <div class="border border-slate-100 p-6 rounded-xl hover:shadow-sm transition">
+                        <p class="text-xl font-medium text-slate-950">CYMBOT</p>
+                        <p class="text-slate-700 mt-2">A mental health conversational AI built using Ollama 7B and Flask.</p>
+                    </div>
                 </div>
-                <div class="card">
-                    <p class="card-title">CYMBOT</p>
-                    <p class="card-authors">AI in Mental Health</p>
-                    <p class="card-description text-sm text-slate-700">A conversational AI tailored for mental health support, built upon the Ollama 7B model and Flask framework.</p>
-                </div>
-            </div>
-        </section>
+            </section>
 
-        <section id="impact">
-            <h2>Leadership & Impact</h2>
-            <p class="impact-text">
-                Beyond research, I am dedicated to using my skills for positive change. I am the founder of **The Indian Programming School**, a peer-to-peer NGO providing fundamental computer science education to students in government schools, fostering a new generation of tech talent.
-            </p>
-        </section>
+            <section>
+                <h2 class="text-xs font-semibold uppercase tracking-widest text-slate-500 mb-5">Leadership & Impact</h2>
+                <p class="text-slate-800 p-5 bg-[#E0F7FA]/30 rounded-lg border border-[#E0F7FA]">
+                    Founder of **The Indian Programming School**, a peer-to-peer NGO teaching computer science foundations to government school students.
+                </p>
+            </section>
 
-    </main>
+        </main>
+
+    </div>
+
+    <footer class="max-w-7xl mx-auto px-12 mb-12 text-center text-xs text-slate-400">
+        © 2026 Rahul Nagilla. Built with simple HTML.
+    </footer>
 
 </body>
 </html>
